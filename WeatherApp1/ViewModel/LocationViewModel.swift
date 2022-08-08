@@ -6,13 +6,13 @@
 //
 
 import Foundation
-import CoreLocation
+import LocationService
 
-
-class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationViewModel: NSObject, ObservableObject {
     
-    var locationManager: CLLocationManager?
-    
+    @Published var currentLocationTextString = ""
+    var locationClient = LocationClient()
+    var locationSearchText: String = ""
     /// Obtain User Location
     ///
     /// Parameters:
@@ -23,46 +23,11 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     ///
     ///  - Latitude / Longitute String
     ///
-    func requestLocation(completion: @escaping (String) -> Void ) {
+    func requestLocation(completion: @escaping (String?) -> Void ) {
+       locationClient.checkLocationServicesEnabled()
         
-        if CLLocationManager.locationServicesEnabled(), locationManager == nil {
-            locationManager = CLLocationManager()
-            locationManager?.delegate = self
-        }
-        guard let location = locationManager?.location?.coordinate else { return }
-        let lat = String(describing: location.latitude)
-        let long = String(describing:location.longitude)
         
-        completion(lat+","+long)
-        
-    }
-    
-    
-   private func checkLocationAuthorization() {
-        guard let locationManager = locationManager else {
-            return
-        }
-        
-        switch locationManager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            break // We're good to go, don't need to check anything else
-        case .denied, .restricted:
-            //show alert about needing location
-            print("You need to enable location services for this app to work")
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        default :
-            print(locationManager.authorizationStatus)
-        }
-        
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        completion(locationClient.getLocation())
     }
     
 }

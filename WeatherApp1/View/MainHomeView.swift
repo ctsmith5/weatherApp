@@ -15,6 +15,7 @@ struct MainHomeView: View {
     
     var body: some View {
         VStack {
+            TextField("Search Locations", text: $locationViewModel.locationSearchText)
             Picker(selection: $forecastSelector) {
                 Text("Hourly").tag(0)
                 Text("Daily").tag(1)
@@ -53,7 +54,7 @@ struct MainHomeView: View {
                         }
                     }
                 case 1:
-                    Text("One full Day Info")
+                    Text(mainViewModel.cityName)
                     
                 case 2:
                     Text(mainViewModel.weather)
@@ -70,7 +71,7 @@ struct MainHomeView: View {
         .onAppear {
             //go get location and then pass to the view model
             locationViewModel.requestLocation { latLong in
-                self.mainViewModel.getLocationKey(latLong)
+                self.mainViewModel.getLocationKey(latLong ?? "")
             }
         }
     }

@@ -13,7 +13,7 @@ class MainViewModel: ObservableObject {
     @Published var weather: String = "Initial Weather"
     @Published var dailyForecasts: [DailyForecasts] = []
     @Published var hourlyForecasts: [HourlyForecast] = []
-    
+    @Published var cityName: String = "None"
     private var locationData: LocationResponse?
     
     
@@ -67,7 +67,10 @@ class MainViewModel: ObservableObject {
         guard let urlString = URLConstants.locationSearch else { return }
         let locationQueryItem = URLQueryItem(name: "q", value: latLong)
         NetworkClient.request(url: urlString, parameters: [locationQueryItem]) { (locationResponse: LocationResponse) in
-            self.locationData = locationResponse
+            DispatchQueue.main.async {
+                self.locationData = locationResponse
+                self.cityName = locationResponse.localizedName
+            }
         }
     }
 }

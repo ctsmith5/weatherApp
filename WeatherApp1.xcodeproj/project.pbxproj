@@ -19,6 +19,7 @@
 		F4A36B222875EAAC00EF6DE0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A36B212875EAAC00EF6DE0 /* MainViewModel.swift */; };
 		F4A36B272879EDD900EF6DE0 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A36B262879EDD900EF6DE0 /* LocationViewModel.swift */; };
 		F4A36B29287C8BB400EF6DE0 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A36B28287C8BB400EF6DE0 /* UIConstants.swift */; };
+		F4D913F1289C28CF0044EA8F /* LocationService in Frameworks */ = {isa = PBXBuildFile; productRef = F4D913F0289C28CF0044EA8F /* LocationService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F485FCA1289C261B001DBB31 /* LocationService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LocationService; path = ../LocationService; sourceTree = "<group>"; };
 		F4A36AF02875E81B00EF6DE0 /* WeatherApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A36AF32875E81B00EF6DE0 /* WeatherApp1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp1App.swift; sourceTree = "<group>"; };
 		F4A36AF52875E81B00EF6DE0 /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D913F1289C28CF0044EA8F /* LocationService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,13 +84,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F485FCA0289C261B001DBB31 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				F485FCA1289C261B001DBB31 /* LocationService */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		F4A36AE72875E81B00EF6DE0 = {
 			isa = PBXGroup;
 			children = (
+				F485FCA0289C261B001DBB31 /* Packages */,
 				F4A36AF22875E81B00EF6DE0 /* WeatherApp1 */,
 				F4A36B032875E81E00EF6DE0 /* WeatherApp1Tests */,
 				F4A36B0D2875E81E00EF6DE0 /* WeatherApp1UITests */,
 				F4A36AF12875E81B00EF6DE0 /* Products */,
+				F4D913EF289C28CF0044EA8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +179,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F4D913EF289C28CF0044EA8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +202,9 @@
 			dependencies = (
 			);
 			name = WeatherApp1;
+			packageProductDependencies = (
+				F4D913F0289C28CF0044EA8F /* LocationService */,
+			);
 			productName = WeatherApp1;
 			productReference = F4A36AF02875E81B00EF6DE0 /* WeatherApp1.app */;
 			productType = "com.apple.product-type.application";
@@ -472,6 +495,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +528,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -633,6 +658,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4D913F0289C28CF0044EA8F /* LocationService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LocationService;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4A36AE82875E81B00EF6DE0 /* Project object */;
 }
