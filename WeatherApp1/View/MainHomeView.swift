@@ -54,6 +54,7 @@ struct MainHomeView: View {
                         }
                     }
                 case 1:
+                    Text(locationViewModel.streetAddress)
                     Text(mainViewModel.cityName)
                     
                 case 2:
@@ -73,6 +74,9 @@ struct MainHomeView: View {
             locationViewModel.requestLocation { latLong in
                 self.mainViewModel.getLocationKey(latLong ?? "")
             }
+        }
+        .task {
+           await locationViewModel.getStreetAddress()
         }
     }
 }

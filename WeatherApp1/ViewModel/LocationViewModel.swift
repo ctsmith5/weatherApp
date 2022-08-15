@@ -13,6 +13,7 @@ class LocationViewModel: NSObject, ObservableObject {
     @Published var currentLocationTextString = ""
     var locationClient = LocationClient()
     var locationSearchText: String = ""
+    var streetAddress = ""
     /// Obtain User Location
     ///
     /// Parameters:
@@ -28,6 +29,10 @@ class LocationViewModel: NSObject, ObservableObject {
         
         
         completion(locationClient.getLocation())
+    }
+    
+    func getStreetAddress() async {
+        await self.streetAddress = locationClient.getStreetAddress()
     }
     
 }
